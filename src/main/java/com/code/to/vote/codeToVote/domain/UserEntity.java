@@ -19,6 +19,9 @@ public class UserEntity
     @NotNull
     private String password;
 
+    @Transient
+    private String credentials;
+
     public UserEntity() {
     }
 

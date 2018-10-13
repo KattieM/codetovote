@@ -4,9 +4,11 @@ import com.code.to.vote.codeToVote.dao.UsersRepository;
 import com.code.to.vote.codeToVote.domain.UserEntity;
 import com.code.to.vote.codeToVote.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class UsersServiceImpl implements UsersService{
 
     @Autowired

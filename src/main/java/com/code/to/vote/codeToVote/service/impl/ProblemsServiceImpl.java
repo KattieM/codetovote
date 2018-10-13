@@ -4,9 +4,11 @@ import com.code.to.vote.codeToVote.dao.ProblemsRepository;
 import com.code.to.vote.codeToVote.domain.ProblemEntity;
 import com.code.to.vote.codeToVote.service.ProblemsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class ProblemsServiceImpl implements ProblemsService {
 
     @Autowired

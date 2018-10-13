@@ -7,11 +7,13 @@ import com.code.to.vote.codeToVote.domain.PotentialProblemUserEntity;
 import com.code.to.vote.codeToVote.dto.PotentialProblemDTO;
 import com.code.to.vote.codeToVote.service.PotentialProblemsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PotentialProblemsServiceImpl implements PotentialProblemsService {
 
     @Autowired
