@@ -12,8 +12,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:9006")
 @RestController
 @RequestMapping("/user")
-public class UserApi {
-
+public class UsersApi {
 
     @Autowired
     private UsersService usersService;
@@ -26,8 +25,8 @@ public class UserApi {
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Boolean deleteUser(@PathVariable Long id) throws Exception {
-        return usersService.deleteUser(id);
+    Boolean deleteUser(@PathVariable Long userId) throws Exception {
+        return usersService.deleteUser(userId);
     }
 
     @RequestMapping(value = "/returnAll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,7 +37,7 @@ public class UserApi {
 
     @RequestMapping(value = "/returnById/{userId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Optional<UserEntity> returnById(@PathVariable Long id) throws Exception {
-        return usersService.returnById(id);
+    Optional<UserEntity> returnById(@PathVariable Long userId) throws Exception {
+        return usersService.returnById(userId);
     }
 }
