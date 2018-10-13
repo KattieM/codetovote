@@ -1,40 +1,32 @@
-package com.code.to.vote.codeToVote.domain;
+package com.code.to.vote.codeToVote.dto;
 
-import javax.persistence.*;
+import com.code.to.vote.codeToVote.domain.PotentialProblemUserEntity;
+import com.code.to.vote.codeToVote.domain.UserEntity;
+
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@Table(name = "PotentialProblems")
-public class PotentialProblemEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class PotentialProblemDTO {
+
     private Long id;
-
-    @Column
     private String name;
-
-    @Column
     private String description;
-
-    @Column (name = "date_created")
-    private Date dateCreated = new Date();
-
-    @ManyToOne
-    @JoinColumn (name = "created_by")
+    private Date dateCreated;
     private UserEntity userEntity;
-
-    @Column(name = "converted_to_problem")
     private boolean converted;
+    private List<PotentialProblemUserEntity> votes;
 
-    public PotentialProblemEntity() {
+    public PotentialProblemDTO() {
     }
 
-    public PotentialProblemEntity(String name, String description, Date dateCreated, UserEntity userEntity, boolean converted) {
+    public PotentialProblemDTO(Long id, String name, String description, Date dateCreated, UserEntity userEntity, boolean converted, List<PotentialProblemUserEntity> votes) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.dateCreated = dateCreated;
         this.userEntity = userEntity;
         this.converted = converted;
+        this.votes = votes;
     }
 
     public Long getId() {
@@ -61,6 +53,14 @@ public class PotentialProblemEntity {
         this.description = description;
     }
 
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
     public UserEntity getUserEntity() {
         return userEntity;
     }
@@ -69,15 +69,19 @@ public class PotentialProblemEntity {
         this.userEntity = userEntity;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
     public boolean isConverted() {
         return converted;
     }
 
     public void setConverted(boolean converted) {
         this.converted = converted;
+    }
+
+    public List<PotentialProblemUserEntity> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<PotentialProblemUserEntity> votes) {
+        this.votes = votes;
     }
 }
