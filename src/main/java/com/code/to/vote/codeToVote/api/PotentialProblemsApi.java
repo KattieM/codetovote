@@ -3,6 +3,7 @@ package com.code.to.vote.codeToVote.api;
 import com.code.to.vote.codeToVote.domain.PotentialProblemEntity;
 import com.code.to.vote.codeToVote.domain.UserEntity;
 import com.code.to.vote.codeToVote.dto.PotentialProblemDTO;
+import com.code.to.vote.codeToVote.dto.VoteDTO;
 import com.code.to.vote.codeToVote.service.PotentialProblemsService;
 import com.code.to.vote.codeToVote.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,17 @@ public class PotentialProblemsApi {
     PotentialProblemDTO returnById(@PathVariable Long problemId) throws Exception {
         return potentialProblemsService.returnById(problemId);
     }
+    @RequestMapping(value = "/vote", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Boolean voteForProblem(@RequestBody VoteDTO voteDTO) throws Exception {
+        return potentialProblemsService.voteForProgram(voteDTO);
+    }
+
+    @RequestMapping(value = "/unvote", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Boolean unvoteForProblem(@RequestBody VoteDTO voteDTO) throws Exception {
+        return potentialProblemsService.unvoteForProgram(voteDTO);
+    }
+
+
 }

@@ -11,11 +11,11 @@ public class PotentialProblemUserEntity {
     @EmbeddedId
     private PotentialProblemUserKey id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("potentialProblemId")
     private PotentialProblemEntity potentialProblemEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("userId")
     private UserEntity userEntity;
 
