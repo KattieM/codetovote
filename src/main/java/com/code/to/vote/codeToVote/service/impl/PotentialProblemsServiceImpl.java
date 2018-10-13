@@ -4,6 +4,7 @@ import com.code.to.vote.codeToVote.dao.PotentialProblemUserRepository;
 import com.code.to.vote.codeToVote.dao.PotentialProblemsRepository;
 import com.code.to.vote.codeToVote.domain.PotentialProblemEntity;
 import com.code.to.vote.codeToVote.domain.PotentialProblemUserEntity;
+import com.code.to.vote.codeToVote.domain.PotentialProblemUserKey;
 import com.code.to.vote.codeToVote.dto.PotentialProblemDTO;
 import com.code.to.vote.codeToVote.service.PotentialProblemsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,13 @@ public class PotentialProblemsServiceImpl implements PotentialProblemsService {
 
     @Override
     public PotentialProblemEntity savePotentialProblem(PotentialProblemEntity potentialProblemEntity) throws Exception {
-        return potentialProblemsRepository.save(potentialProblemEntity);
+        PotentialProblemEntity potentialProblemEntity1 = potentialProblemsRepository.save(potentialProblemEntity);
+        PotentialProblemUserEntity potentialProblemUserEntity = new PotentialProblemUserEntity();
+        PotentialProblemUserKey potentialProblemUserKey = new PotentialProblemUserKey();
+        potentialProblemUserKey.setPotentialProblemId(potentialProblemEntity1.getId());
+        potentialProblemUserKey.setUserId(potentialProblemEntity1.getUserEntity().getId());
+        potentialProblemUserRepository.save(potentialProblemUserEntity);
+        return potentialProblemEntity1;
     }
 
     @Override

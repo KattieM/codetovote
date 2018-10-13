@@ -47,6 +47,8 @@ public class SecurityFilter implements Filter{
         } else {
             if(httpRequest.getRequestURI().contains("login")
                     || httpRequest.getRequestURI().contains("returnAll")
+                    || httpRequest.getRequestURI().contains("returnById")
+                    || httpRequest.getRequestURI().contains("register")
                     || httpRequest.getRequestURI().contains("delete")
                     || httpRequest.getRequestURI().contains("save")
                     || httpRequest.getRequestURI().contains("createPresentation")

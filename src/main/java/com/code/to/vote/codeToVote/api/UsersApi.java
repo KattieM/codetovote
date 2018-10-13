@@ -17,7 +17,7 @@ public class UsersApi {
     @Autowired
     private UsersService usersService;
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     UserEntity saveUser(@RequestBody UserEntity userEntity) throws Exception {
         return usersService.saveUser(userEntity);
@@ -39,5 +39,11 @@ public class UsersApi {
     public @ResponseBody
     Optional<UserEntity> returnById(@PathVariable Long userId) throws Exception {
         return usersService.returnById(userId);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    UserEntity login(@RequestBody UserEntity userEntity) throws Exception {
+        return usersService.loginUser(userEntity);
     }
 }

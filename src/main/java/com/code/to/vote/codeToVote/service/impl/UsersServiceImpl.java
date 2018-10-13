@@ -34,4 +34,14 @@ public class UsersServiceImpl implements UsersService{
     public Optional<UserEntity> returnById(Long id) {
         return usersRepository.findById(id);
     }
+
+    @Override
+    public UserEntity loginUser(UserEntity userEntity) throws Exception {
+        UserEntity userEntity1 = usersRepository.findByUsername(userEntity.getUsername());
+        if(userEntity1!=null && userEntity1.getPassword().equals(userEntity.getPassword())){
+            return userEntity1;
+        }
+        else
+            throw new Exception();
+    }
 }

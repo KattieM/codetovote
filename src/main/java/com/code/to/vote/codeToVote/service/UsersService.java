@@ -9,4 +9,5 @@ public interface UsersService {
     public Boolean deleteUser(Long userId) throws Exception;
     public Iterable<UserEntity> returnAll();
     public Optional<UserEntity> returnById(Long id);
+    public UserEntity loginUser(UserEntity userEntity) throws Exception;
 }
